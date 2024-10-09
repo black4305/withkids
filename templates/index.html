@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가보자고 - SNS 데이터</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        // 탭 클릭 시 콘텐츠 변경
+        function showContent(contentId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.style.display = 'none'; // 모든 섹션 숨김
+            });
+            document.getElementById(contentId).style.display = 'block'; // 선택된 섹션만 표시
+        }
+
+        // 페이지 로드 시 기본적으로 SNS 탭을 표시
+        window.onload = function() {
+            showContent('sns');
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>가보자고</h1>
+        </header>
+        <nav>
+            <ul class="tabs">
+                <li class="tab" onclick="showContent('water')">물놀이</li>
+                <li class="tab" onclick="showContent('cafe')">카페</li>
+                <li class="tab" onclick="showContent('kids')">가보자고</li>
+                <li class="tab" onclick="showContent('boardgames')">보드게임</li>
+                <li class="tab" onclick="showContent('restaurant')">식당</li>
+                <li class="tab" onclick="showContent('culture')">문화센터</li>
+                <li class="tab" onclick="showContent('nature')">자연</li>
+                <li class="tab" onclick="showContent('sns')">SNS</li>
+            </ul>
+        </nav>
+
+        <!-- SNS 데이터 표 -->
+        <section id="sns" class="content-section">
+            <h2>SNS 데이터 목록</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>작성일</th>
+                            <th>카테고리</th>
+                            <th>지역</th>
+                            <th>행사명</th>
+                            <th>내용</th>
+                            <th>장소</th>
+                            <th>일시</th>
+                            <th>대상</th>
+                            <th>접수기간</th>
+                            <th>문의</th>
+                            <th>신청 링크</th>
+                            <th>게시물 링크</th>
+                            <th>페이지 링크</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sns in sns_data %}
+                        <tr>
+                            <td>{{ sns.작성일 }}</td>
+                            <td>{{ sns.카테고리 }}</td>
+                            <td>{{ sns.지역 }}</td>
+                            <td>{{ sns.행사명 }}</td>
+                            <td>{{ sns.내용 }}</td>
+                            <td>{{ sns.장소 }}</td>
+                            <td>{{ sns.일시 or 'N/A' }}</td>
+                            <td>{{ sns.대상 or 'N/A' }}</td>
+                            <td>{{ sns.접수기간 or 'N/A' }}</td>
+                            <td>{{ sns.문의 or 'N/A' }}</td>
+                            <td><a href="{{ sns.신청링크 }}" target="_blank">{{ sns.신청링크 }}</a></td>
+                            <td><a href="{{ sns.게시물링크 }}" target="_blank">{{ sns.게시물링크 }}</a></td>
+                            <td><a href="{{ sns.페이지링크 }}" target="_blank">{{ sns.페이지링크 }}</a></td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="13">데이터가 없습니다.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- 다른 콘텐츠 영역 -->
+        <section id="water" class="content-section">
+            <h2>물놀이 콘텐츠</h2>
+            <!-- 물놀이 관련 내용 추가 -->
+        </section>
+        <section id="cafe" class="content-section">
+            <h2>카페 콘텐츠</h2>
+            <!-- 카페 관련 내용 추가 -->
+        </section>
+        <!-- 나머지 탭 콘텐츠도 동일하게 추가 -->
+    </div>
+</body>
+</html>
