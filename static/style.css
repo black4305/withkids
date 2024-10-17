@@ -35,9 +35,37 @@ ul.tabs li:hover {
     background-color: #ddd;
 }
 
-ul.tabs li.active {
-    background-color: #ccc;
-    border-radius: 5px;
+/* 개별 탭 색상 */
+.water-tab {
+    background-color: #ff9999;
+}
+
+.cafe-tab {
+    background-color: #99ccff;
+}
+
+.kids-tab {
+    background-color: #ffcc99;
+}
+
+.boardgames-tab {
+    background-color: #ccffcc;
+}
+
+.restaurant-tab {
+    background-color: #ffccff;
+}
+
+.culture-tab {
+    background-color: #ffff99;
+}
+
+.nature-tab {
+    background-color: #99ff99;
+}
+
+.sns-tab {
+    background-color: #ff9966;
 }
 
 /* 콘텐츠 섹션 */
@@ -48,20 +76,21 @@ ul.tabs li.active {
 /* 테이블 스타일 */
 .table-container {
     max-width: 100%;
-    overflow-x: auto; /* 가로 스크롤 추가 */
+    overflow-y: auto; /* 세로 스크롤 추가 */
 }
 
 table {
-    width: 100%;
+    width: 100%; /* 테이블이 전체 너비를 차지하도록 설정 */
     border-collapse: collapse;
-    table-layout: auto; /* 각 열의 너비를 자동으로 조정 */
+    table-layout: auto; /* 행 너비를 자동으로 조정 */
 }
 
 th, td {
     padding: 10px;
     text-align: left;
     border: 1px solid #ddd;
-    white-space: nowrap; /* 내용이 너무 길 경우 줄바꿈 방지 */
+    word-wrap: break-word; /* 긴 텍스트를 자동으로 줄바꿈 */
+    white-space: normal; /* 줄바꿈을 허용 */
 }
 
 th {
