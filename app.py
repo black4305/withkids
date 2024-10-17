@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 import json
+import os
 
 app = Flask(__name__)
 
@@ -60,4 +61,5 @@ def index():
     return render_template('index.html', sns_data=sns_data)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    port = int(os.getenv('PORT', 8000))  # Render에서 제공한 포트 사용, 없으면 기본 8000
+    app.run(host='0.0.0.0', port=port)
