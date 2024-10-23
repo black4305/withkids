@@ -1,96 +1,88 @@
-/* 전체적인 폰트 설정 */
+/* 기본 설정 */
 body {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #000; /* 전체 배경을 검은색으로 */
+    color: #fff; /* 기본 텍스트 색상 흰색 */
 }
 
+/* 헤더 스타일 */
 header h1 {
-    font-size: 2.5em;
+    font-size: 3em;
     text-align: center;
     margin: 20px 0;
-    color: #222;
-    font-weight: bold;
+    color: #fff; /* 흰색 텍스트 */
+    font-weight: 600;
 }
 
-/* 가로 배열된 탭 스타일 */
+/* 가로 배열된 탭 */
+nav {
+    background-color: #1a1a1a; /* 짙은 회색 배경 */
+    border-bottom: 1px solid #333; /* 어두운 테두리 */
+}
+
 ul.tabs {
     display: flex;
     justify-content: center;
     list-style: none;
     padding: 0;
-    margin-bottom: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 0;
 }
 
 ul.tabs li {
-    margin: 0 10px;
-    padding: 15px 25px;
-    font-weight: bold;
+    margin: 0 20px;
+    padding: 15px 20px;
+    font-size: 1.2em;
+    color: #aaa; /* 옅은 회색 */
     cursor: pointer;
-    border-bottom: 3px solid transparent;
     transition: all 0.3s ease;
-    color: #555;
+    border-bottom: 3px solid transparent;
 }
 
 ul.tabs li.active, ul.tabs li:hover {
-    border-bottom: 3px solid #007BFF; /* 활성화된 탭 강조 */
-    color: #007BFF;
+    border-bottom: 2px solid #fff; /* 활성화된 탭 하단 흰색 강조 */
+    color: #fff; /* 흰색 텍스트 */
 }
 
-ul.tabs li:hover {
-    background-color: #f9f9f9;
-    transform: translateY(-2px); /* 살짝 떠오르는 효과 */
-}
-
-/* 콘텐츠 섹션 스타일 */
+/* 콘텐츠 섹션 */
 .content-section {
     padding: 20px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #1a1a1a; /* 섹션 배경 어두운 회색 */
     border-radius: 8px;
     max-width: 1200px;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
-}
-
-h2 {
-    font-size: 1.8em;
-    color: #007BFF;
-    border-bottom: 2px solid #007BFF;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    margin-top: 20px;
 }
 
 /* 테이블 스타일 */
 .table-container {
-    overflow-x: auto; /* 모바일 화면에서 테이블이 넘칠 경우 스크롤 허용 */
-    margin-top: 20px;
+    overflow-x: hidden; /* 가로 스크롤 제거 */
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed; /* 각 셀이 동일한 너비를 가지도록 */
 }
 
 th, td {
     padding: 12px 15px;
     text-align: left;
-    border: 1px solid #ddd;
-    white-space: nowrap; /* 줄바꿈 방지 */
-    text-overflow: ellipsis;
-    overflow: hidden;
+    border: 1px solid #444; /* 어두운 테두리 */
+    color: #fff; /* 흰색 텍스트 */
+    word-wrap: break-word; /* 긴 텍스트 줄바꿈 */
+    white-space: normal; /* 텍스트 줄바꿈을 허용 */
 }
 
 th {
-    background-color: #007BFF;
-    color: white;
+    background-color: #333; /* 헤더 배경 어두운 회색 */
+    color: #fff; /* 헤더 텍스트 흰색 */
 }
 
 td a {
-    color: #007BFF;
+    color: #1e90ff; /* 파란색 링크 */
     text-decoration: none;
 }
 
@@ -101,7 +93,7 @@ td a:hover {
 /* 반응형 디자인 */
 @media (max-width: 768px) {
     ul.tabs li {
-        padding: 10px 15px;
+        padding: 10px 12px;
     }
 
     h2 {

@@ -4,38 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nino's Trip</title>
-    <link rel="stylesheet" href="style.css">
     
-    <!-- Google Analytics 코드 삽입 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4RKD217X33"></script>
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <!-- Google Analytics 코드 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-
         gtag('config', 'UA-XXXXXXXXX-X');
     </script>
 </head>
 <body>
     <header>
         <h1>Nino's Trip</h1>
-        <!-- 가로로 배열된 주요 탭 -->
-        <ul class="tabs">
-            <li class="tab" onclick="showContent('activity')">액티비티</li>
-            <li class="tab" onclick="showContent('cafe')">카페</li>
-            <li class="tab" onclick="showContent('nino-trip')">니뇨의 여행</li>
-            <li class="tab" onclick="showContent('kids-restaurant')">키즈식당</li>
-            <li class="tab" onclick="showContent('culture-center')">문화센터</li>
-            <li class="tab" onclick="showContent('forest')">유아숲</li>
-            <li class="tab" onclick="showContent('event')">이달의 행사</li>
-            <li class="tab" onclick="showContent('schedule')">일정</li>
-            <li class="tab" onclick="showContent('contact')">문의</li>
-        </ul>
+        <!-- 가로 배열된 탭 -->
+        <nav>
+            <ul class="tabs">
+                <li class="tab" onclick="showContent('activity')">액티비티</li>
+                <li class="tab" onclick="showContent('cafe')">카페</li>
+                <li class="tab" onclick="showContent('nino-trip')">니뇨의 여행</li>
+                <li class="tab" onclick="showContent('kids-restaurant')">키즈식당</li>
+                <li class="tab" onclick="showContent('culture-center')">문화센터</li>
+                <li class="tab" onclick="showContent('forest')">유아숲</li>
+                <li class="tab" onclick="showContent('event')">이달의 행사</li>
+                <li class="tab" onclick="showContent('schedule')">일정</li>
+                <li class="tab" onclick="showContent('contact')">문의</li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- 각 탭의 콘텐츠 섹션 -->
+    <!-- 액티비티 섹션 -->
     <section id="activity" class="content-section" style="display: none;">
         <h2>액티비티</h2>
         <div class="table-container">
@@ -45,68 +48,56 @@
         </div>
     </section>
 
-    <section id="cafe" class="content-section" style="display: none;">
-        <h2>카페</h2>
-        <div class="table-container">
-            <table>
-                <!-- 카페 관련 데이터 테이블 -->
-            </table>
-        </div>
-    </section>
-
-    <section id="nino-trip" class="content-section" style="display: none;">
-        <h2>니뇨의 여행</h2>
-        <div class="table-container">
-            <table>
-                <!-- 니뇨의 여행 관련 데이터 테이블 -->
-            </table>
-        </div>
-    </section>
-
-    <section id="kids-restaurant" class="content-section" style="display: none;">
-        <h2>키즈식당</h2>
-        <div class="table-container">
-            <table>
-                <!-- 키즈식당 관련 데이터 테이블 -->
-            </table>
-        </div>
-    </section>
-
-    <section id="culture-center" class="content-section" style="display: none;">
-        <h2>문화센터</h2>
-        <div class="table-container">
-            <table>
-                <!-- 문화센터 관련 데이터 테이블 -->
-            </table>
-        </div>
-    </section>
-
-    <section id="forest" class="content-section" style="display: none;">
-        <h2>유아숲</h2>
-        <div class="table-container">
-            <table>
-                <!-- 유아숲 관련 데이터 테이블 -->
-            </table>
-        </div>
-    </section>
-
+    <!-- 이달의 행사 섹션 -->
     <section id="event" class="content-section" style="display: none;">
         <h2>이달의 행사</h2>
         <div class="table-container">
-            <!-- 행사 관련 데이터 테이블 -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>작성일</th>
+                        <th>카테고리</th>
+                        <th>지역</th>
+                        <th>행사명</th>
+                        <th>내용</th>
+                        <th>장소</th>
+                        <th>일시</th>
+                        <th>대상</th>
+                        <th>접수기간</th>
+                        <th>문의</th>
+                        <th>신청 링크</th>
+                        <th>게시물 링크</th>
+                        <th>페이지 링크</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sns in sns_data %}
+                    <tr>
+                        <td>{{ sns.작성일 }}</td>
+                        <td>{{ sns.카테고리 }}</td>
+                        <td>{{ sns.지역 }}</td>
+                        <td>{{ sns.행사명 }}</td>
+                        <td>{{ sns.내용 }}</td>
+                        <td>{{ sns.장소 }}</td>
+                        <td>{{ sns.일시 or 'N/A' }}</td>
+                        <td>{{ sns.대상 or 'N/A' }}</td>
+                        <td>{{ sns.접수기간 or 'N/A' }}</td>
+                        <td>{{ sns.문의 or 'N/A' }}</td>
+                        <td><a href="{{ sns.신청링크 }}" target="_blank">{{ sns.신청링크 }}</a></td>
+                        <td><a href="{{ sns.게시물링크 }}" target="_blank">{{ sns.게시물링크 }}</a></td>
+                        <td><a href="{{ sns.페이지링크 }}" target="_blank">{{ sns.페이지링크 }}</a></td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="13">데이터가 없습니다.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </section>
 
-    <section id="schedule" class="content-section" style="display: none;">
-        <h2>일정</h2>
-        <!-- 일정 관련 데이터 -->
-    </section>
-
-    <section id="contact" class="content-section" style="display: none;">
-        <h2>문의</h2>
-        <!-- 문의 관련 내용 -->
-    </section>
-
-    <script src="script.js"></script>
+    <!-- JavaScript 파일 연결 -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
