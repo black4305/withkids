@@ -9,10 +9,5 @@ function showContent(contentId) {
     sections.forEach(section => {
         section.style.display = 'none'; // 모든 섹션 숨김
     });
-    const element = document.getElementById(contentId);
-    if (element) {
-        element.style.display = 'block'; // 선택된 섹션만 표시
-    } else {
-        console.error(`Element with ID '${contentId}' not found.`);
-    }
+    document.getElementById(contentId).style.display = 'block'; // 선택된 섹션만 표시
 }

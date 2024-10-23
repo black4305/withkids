@@ -1,74 +1,48 @@
 /* 전체적인 폰트 설정 */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: #f4f4f4;
 }
 
 header h1 {
     font-size: 2.5em;
     text-align: center;
     margin: 20px 0;
-    color: #333;
+    color: #222;
+    font-weight: bold;
 }
 
-/* 주요 탭 (액티비티, 카페 등) 스타일 */
-ul.primary-tabs {
+/* 가로 배열된 탭 스타일 */
+ul.tabs {
     display: flex;
     justify-content: center;
     list-style: none;
     padding: 0;
     margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-ul.primary-tabs li {
+ul.tabs li {
     margin: 0 10px;
-    padding: 10px 20px;
+    padding: 15px 25px;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 8px;
-    background-color: #eee;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-ul.primary-tabs li.active {
-    background-color: #333;
-    color: white;
-}
-
-ul.primary-tabs li:hover {
-    background-color: #ddd;
-    transform: translateY(-2px);
-}
-
-/* 추가 정보 탭 (이달의 행사, 일정 등) 스타일 */
-ul.secondary-tabs {
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-    padding: 10px;
-    background-color: #f0f0f0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-ul.secondary-tabs li {
-    font-size: 1.1em;
-    padding: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-ul.secondary-tabs li:hover {
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
     color: #555;
 }
 
-ul.secondary-tabs li.active {
-    color: #333;
-    text-decoration: underline;
+ul.tabs li.active, ul.tabs li:hover {
+    border-bottom: 3px solid #007BFF; /* 활성화된 탭 강조 */
+    color: #007BFF;
+}
+
+ul.tabs li:hover {
+    background-color: #f9f9f9;
+    transform: translateY(-2px); /* 살짝 떠오르는 효과 */
 }
 
 /* 콘텐츠 섹션 스타일 */
@@ -76,39 +50,65 @@ ul.secondary-tabs li.active {
     padding: 20px;
     margin: 0 auto;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 8px;
     max-width: 1200px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px; /* Footer와 겹치지 않도록 아래 여백 추가 */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #007BFF;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 /* 테이블 스타일 */
 .table-container {
-    margin: 20px 0;
+    overflow-x: auto; /* 모바일 화면에서 테이블이 넘칠 경우 스크롤 허용 */
+    margin-top: 20px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: auto; /* 열 너비 자동 조정 */
 }
 
 th, td {
-    padding: 10px;
+    padding: 12px 15px;
     text-align: left;
     border: 1px solid #ddd;
     white-space: nowrap; /* 줄바꿈 방지 */
-    text-overflow: ellipsis; /* 글자가 넘칠 경우 말줄임표 표시 */
+    text-overflow: ellipsis;
     overflow: hidden;
 }
 
-/* 테이블 헤더 스타일 */
 th {
-    background-color: #333;
+    background-color: #007BFF;
     color: white;
 }
 
-/* 테이블 행 호버 효과 */
-tr:hover {
-    background-color: #f1f1f1;
+td a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    ul.tabs li {
+        padding: 10px 15px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    th, td {
+        font-size: 0.9em;
+    }
 }
