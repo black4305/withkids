@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     
     <!-- Google Analytics 코드 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4RKD217X33"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-        gtag('config', 'UA-XXXXXXXXX-X');
+        gtag('config', 'G-4RKD217X33');
     </script>
 </head>
 <body>
@@ -32,8 +32,8 @@
                 <li class="tab" onclick="showContent('culture-center')">문화센터</li>
                 <li class="tab" onclick="showContent('forest')">유아숲</li>
                 <li class="tab" onclick="showContent('event')">이달의 행사</li>
-                <li class="tab" onclick="showContent('schedule')">일정</li>
                 <li class="tab" onclick="showContent('contact')">문의</li>
+                <li class="tab" onclick="createShortcut()">즐겨찾기</li> <!-- 바로가기 탭 -->
             </ul>
         </nav>
     </header>
@@ -95,6 +95,12 @@
                 </tbody>
             </table>
         </div>
+    </section>
+
+    <!-- 문의 섹션 -->
+    <section id="contact" class="content-section" style="display: none;">
+        <h2>문의</h2>
+        <p>여기에 문의 내용을 적어주세요.</p>
     </section>
 
     <!-- JavaScript 파일 연결 -->
