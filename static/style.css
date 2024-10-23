@@ -1,98 +1,114 @@
-/* 전체 컨테이너 */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* 헤더 스타일 */
-header h1 {
+/* 전체적인 폰트 설정 */
+body {
     font-family: 'Roboto', sans-serif;
-    text-align: center;
-    margin-bottom: 20px;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
 }
 
-/* 탭 스타일 */
-ul.tabs {
+header h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+}
+
+/* 주요 탭 (액티비티, 카페 등) 스타일 */
+ul.primary-tabs {
+    display: flex;
+    justify-content: center;
     list-style: none;
     padding: 0;
+    margin-bottom: 20px;
+}
+
+ul.primary-tabs li {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #eee;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+ul.primary-tabs li.active {
+    background-color: #333;
+    color: white;
+}
+
+ul.primary-tabs li:hover {
+    background-color: #ddd;
+    transform: translateY(-2px);
+}
+
+/* 추가 정보 탭 (이달의 행사, 일정 등) 스타일 */
+ul.secondary-tabs {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 20px;
-    background-color: #f2f2f2;
-    border-radius: 5px;
+    list-style: none;
+    padding: 10px;
+    background-color: #f0f0f0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-ul.tabs li {
-    padding: 10px 20px;
-    cursor: pointer;
+ul.secondary-tabs li {
+    font-size: 1.1em;
+    padding: 10px;
     font-weight: bold;
-    font-family: 'Roboto', sans-serif;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-ul.tabs li:hover {
-    background-color: #ddd;
+ul.secondary-tabs li:hover {
+    color: #555;
 }
 
-/* 개별 탭 색상 */
-.water-tab {
-    background-color: #ff9999;
+ul.secondary-tabs li.active {
+    color: #333;
+    text-decoration: underline;
 }
 
-.cafe-tab {
-    background-color: #99ccff;
-}
-
-.kids-tab {
-    background-color: #ffcc99;
-}
-
-.boardgames-tab {
-    background-color: #ccffcc;
-}
-
-.restaurant-tab {
-    background-color: #ffccff;
-}
-
-.culture-tab {
-    background-color: #ffff99;
-}
-
-.nature-tab {
-    background-color: #99ff99;
-}
-
-.sns-tab {
-    background-color: #ff9966;
-}
-
-/* 콘텐츠 섹션 */
+/* 콘텐츠 섹션 스타일 */
 .content-section {
-    display: none; /* 기본적으로 숨김 */
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    max-width: 1200px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px; /* Footer와 겹치지 않도록 아래 여백 추가 */
 }
 
 /* 테이블 스타일 */
 .table-container {
-    width: 100%; /* 컨테이너가 전체 너비를 차지하도록 설정 */
-    overflow-x: auto; /* 가로 스크롤을 방지 */
+    margin: 20px 0;
 }
 
 table {
-    width: 100%; /* 테이블이 전체 너비를 차지하도록 설정 */
+    width: 100%;
     border-collapse: collapse;
-    table-layout: fixed; /* 셀의 너비를 고정하여 넘침 방지 */
+    table-layout: auto; /* 열 너비 자동 조정 */
 }
 
 th, td {
     padding: 10px;
     text-align: left;
     border: 1px solid #ddd;
-    word-wrap: break-word; /* 긴 텍스트가 자동으로 줄바꿈되도록 설정 */
-    white-space: normal; /* 줄바꿈을 허용 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+    text-overflow: ellipsis; /* 글자가 넘칠 경우 말줄임표 표시 */
+    overflow: hidden;
 }
 
+/* 테이블 헤더 스타일 */
 th {
-    background-color: #f2f2f2;
+    background-color: #333;
+    color: white;
+}
+
+/* 테이블 행 호버 효과 */
+tr:hover {
+    background-color: #f1f1f1;
 }
