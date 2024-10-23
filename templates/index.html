@@ -29,18 +29,97 @@
         <!-- 가로 배열된 탭 -->
         <nav>
             <ul class="tabs">
+                <li class="tab" onclick="showContent('event')">이달의 행사</li>
+                <li class="tab" onclick="showContent('nino-trip')">니뇨의 여행</li>
                 <li class="tab" onclick="showContent('activity')">액티비티</li>
                 <li class="tab" onclick="showContent('cafe')">카페</li>
-                <li class="tab" onclick="showContent('nino-trip')">니뇨의 여행</li>
                 <li class="tab" onclick="showContent('kids-restaurant')">키즈식당</li>
                 <li class="tab" onclick="showContent('culture-center')">문화센터</li>
                 <li class="tab" onclick="showContent('forest')">유아숲</li>
-                <li class="tab" onclick="showContent('event')">이달의 행사</li>
                 <li class="tab" onclick="showContent('contact')">문의</li>
                 <li class="tab" onclick="createShortcut()">즐겨찾기</li>
             </ul>
         </nav>
     </header>
+
+    <!-- event 데이터 표 -->
+    <section id="event" class="content-section" style="display: none;">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>작성일</th>
+                        <th>카테고리</th>
+                        <th>지역</th>
+                        <th>행사명</th>
+                        <th>내용</th>
+                        <th>장소</th>
+                        <th>일시</th>
+                        <th>대상</th>
+                        <th>접수기간</th>
+                        <th>문의</th>
+                        <th>신청 링크</th>
+                        <th>게시물 링크</th>
+                        <th>페이지 링크</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sns in sns_data %}
+                    <tr>
+                        <td>{{ sns.작성일 }}</td>
+                        <td>{{ sns.카테고리 }}</td>
+                        <td>{{ sns.지역 }}</td>
+                        <td>{{ sns.행사명 }}</td>
+                        <td>{{ sns.내용 }}</td>
+                        <td>{{ sns.장소 }}</td>
+                        <td>{{ sns.일시 or 'N/A' }}</td>
+                        <td>{{ sns.대상 or 'N/A' }}</td>
+                        <td>{{ sns.접수기간 or 'N/A' }}</td>
+                        <td>{{ sns.문의 or 'N/A' }}</td>
+                        <td><a href="{{ sns.신청링크 }}" target="_blank">{{ sns.신청링크 }}</a></td>
+                        <td><a href="{{ sns.게시물링크 }}" target="_blank">{{ sns.게시물링크 }}</a></td>
+                        <td><a href="{{ sns.페이지링크 }}" target="_blank">{{ sns.페이지링크 }}</a></td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="13">데이터가 없습니다.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="nino-trip" class="content-section" style="display: block;">
+        <h2>니노의 여행</h2>
+        <!-- 니노의 여행 관련 내용 추가 -->
+    </section>
+
+    <!-- 다른 콘텐츠 영역 -->
+    <section id="activity" class="content-section" style="display: none;">
+        <h2>물놀이 콘텐츠</h2>
+        <!-- 물놀이 관련 내용 추가 -->
+    </section>
+
+    <section id="cafe" class="content-section" style="display: none;">
+        <h2>카페 콘텐츠</h2>
+        <!-- 카페 관련 내용 추가 -->
+    </section>
+
+    <section id="kids-restaurant" class="content-section" style="display: none;">
+        <h2>키즈식당 콘텐츠</h2>
+        <!-- 키즈식당 관련 내용 추가 -->
+    </section>
+
+    <section id="culture-center" class="content-section" style="display: none;">
+        <h2>문화센터 콘텐츠</h2>
+        <!-- 문화센터 관련 내용 추가 -->
+    </section>
+
+    <section id="forest" class="content-section" style="display: none;">
+        <h2>유아숲</h2>
+        <!-- 유아숲 관련 내용 추가 -->
+    </section>
 
     <!-- 문의 섹션 -->
     <section id="contact" class="content-section" style="display: none;">

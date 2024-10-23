@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function() {
+    showContent('nino-trip');  // 페이지 로드 시 '니뇨의 여행' 섹션 보이기
+});
+
 // 탭 전환 함수
 function showContent(contentId) {
     const sections = document.querySelectorAll('.content-section');

@@ -53,7 +53,7 @@ def insert_data_from_json(json_file):
 # 앱 컨텍스트 내에서 테이블을 생성하고 데이터 삽입
 with app.app_context():
     db.create_all()  # 테이블 생성
-    insert_data_from_json('sns_data.json')  # JSON 파일에서 데이터 삽입
+    insert_data_from_json('data/sns_data.json')  # JSON 파일에서 데이터 삽입
 
 @app.route('/')
 def index():
