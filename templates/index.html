@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>니뇨의 여행 - SNS 데이터</title>
+    <title>니뇨의 여행</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <!-- Google tag (gtag.js) -->
@@ -37,19 +37,18 @@
         </header>
         <nav>
             <ul class="tabs">
-                <li class="tab water-tab" onclick="showContent('water')">액티비티</li>
+                <li class="tab activity-tab" onclick="showContent('activity')">액티비티</li>
                 <li class="tab cafe-tab" onclick="showContent('cafe')">카페</li>
-                <li class="tab kids-tab" onclick="showContent('kids')">니뇨의 여행</li>
+                <li class="tab main-tab" onclick="showContent('main')">니뇨의 여행</li>
                 <li class="tab restaurant-tab" onclick="showContent('restaurant')">키즈식당</li>
                 <li class="tab culture-tab" onclick="showContent('culture')">문화센터</li>
                 <li class="tab nature-tab" onclick="showContent('nature')">유아숲</li>
-                <li class="tab sns-tab" onclick="showContent('sns')">이달의 행사</li>
+                <li class="tab evnet-tab" onclick="showContent('event')">이달의 행사</li>
             </ul>
         </nav>
 
         <!-- SNS 데이터 표 -->
         <section id="sns" class="content-section">
-            <h2>SNS 데이터 목록</h2>
             <div class="table-container">
                 <table>
                     <thead>
