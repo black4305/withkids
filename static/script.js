@@ -8,19 +8,11 @@ function showContent(contentId) {
     document.getElementById(contentId).style.display = 'block'; // 선택된 섹션만 보이게 하기
 }
 
-// 바탕화면에 바로가기 생성 함수
+// 즐겨찾기 생성 (PWA 설정 완료 상태에서는 필요 없을 수도 있음)
 function createShortcut() {
-    const url = window.location.href;
-    const title = document.title;
-
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = title;
-    
-    const blob = new Blob([url], { type: 'text/plain' });
-    const linkUrl = URL.createObjectURL(blob);
-    link.href = linkUrl;
-    
-    link.click();
-    alert("바탕화면에 바로가기가 생성되었습니다.");
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        alert("이미 앱으로 설치되었습니다.");
+    } else {
+        alert("이 사이트를 홈 화면에 추가하려면 브라우저 메뉴에서 '홈 화면에 추가'를 선택하세요.");
+    }
 }
