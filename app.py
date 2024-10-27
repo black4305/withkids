@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # SQLite 데이터베이스 설정
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///event.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data/event.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
