@@ -64,21 +64,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for sns in sns_data %}
+                    {% for event in event_data %}
                     <tr>
-                        <td>{{ sns.작성일 }}</td>
-                        <td>{{ sns.카테고리 }}</td>
-                        <td>{{ sns.지역 }}</td>
-                        <td>{{ sns.행사명 }}</td>
-                        <td>{{ sns.내용 }}</td>
-                        <td>{{ sns.장소 }}</td>
-                        <td>{{ sns.일시 or 'N/A' }}</td>
-                        <td>{{ sns.대상 or 'N/A' }}</td>
-                        <td>{{ sns.접수기간 or 'N/A' }}</td>
-                        <td>{{ sns.문의 or 'N/A' }}</td>
-                        <td><a href="{{ sns.신청링크 }}" target="_blank">{{ sns.신청링크 }}</a></td>
-                        <td><a href="{{ sns.게시물링크 }}" target="_blank">{{ sns.게시물링크 }}</a></td>
-                        <td><a href="{{ sns.페이지링크 }}" target="_blank">{{ sns.페이지링크 }}</a></td>
+                        <td>{{ event.작성일 }}</td>
+                        <td>{{ event.카테고리 }}</td>
+                        <td>{{ event.지역 }}</td>
+                        <td>{{ event.행사명 }}</td>
+                        <td>{{ event.내용 }}</td>
+                        <td>{{ event.장소 }}</td>
+                        <td>{{ event.일시 or 'N/A' }}</td>
+                        <td>{{ event.대상 or 'N/A' }}</td>
+                        <td>{{ event.접수기간 or 'N/A' }}</td>
+                        <td>{{ event.문의 or 'N/A' }}</td>
+                        <td><a href="{{ event.신청링크 }}" target="_blank">{{ event.신청링크 }}</a></td>
+                        <td><a href="{{ event.게시물링크 }}" target="_blank">{{ event.게시물링크 }}</a></td>
+                        <td><a href="{{ event.페이지링크 }}" target="_blank">{{ event.페이지링크 }}</a></td>
                     </tr>
                     {% else %}
                     <tr>
