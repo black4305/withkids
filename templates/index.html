@@ -42,7 +42,6 @@
         </nav>
     </header>
 
-    <!-- event 데이터 표 -->
     <section id="event" class="content-section" style="display: none;">
         <div class="table-container">
             <table>
@@ -90,6 +89,41 @@
         </div>
     </section>
 
+    <!-- Nino's Trip Section -->
+    <section id="nino-trip" class="content-section" style="display: none;">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>지역</th>
+                        <th>장소</th>
+                        <th>알짜 팁</th>
+                        <th>나이</th>
+                        <th>가격</th>
+                        <th>실내/실외</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for trip in nino_trip_data %}
+                    <tr>
+                        <td>{{ trip.지역 }}</td>
+                        <td>{{ trip.장소 }}</td>
+                        <td>{{ trip.알짜_팁 }}</td>
+                        <td>{{ trip.나이 }}</td>
+                        <td>{{ trip.가격 }}</td>
+                        <td>{{ trip.실내_실외 }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6">데이터가 없습니다.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    
     <section id="nino-trip" class="content-section" style="display: block;">
         <h2>니노의 여행</h2>
         <!-- 니노의 여행 관련 내용 추가 -->
