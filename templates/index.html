@@ -90,6 +90,7 @@
     </section>
 
     <!-- Nino's Trip Section -->
+    <!-- nino-trip 섹션 -->
     <section id="nino-trip" class="content-section" style="display: none;">
         <div class="table-container">
             <table>
@@ -107,11 +108,11 @@
                     {% for trip in nino_trip_data %}
                     <tr>
                         <td>{{ trip.지역 }}</td>
-                        <td>{{ trip.장소 }}</td>
-                        <td>{{ trip.알짜_팁 }}</td>
-                        <td>{{ trip.나이 }}</td>
-                        <td>{{ trip.가격 }}</td>
-                        <td>{{ trip.실내_실외 }}</td>
+                        <td><a href="{{ trip.링크 }}" target="_blank">{{ trip.장소 }}</a></td>
+                        <td class="pre-wrap">{{ trip["알짜 팁"] }}</td>
+                        <td>{{ trip.나이 or 'N/A' }}</td>
+                        <td>{{ trip.가격 or 'N/A' }}</td>
+                        <td class="pre-wrap">{{ trip["실내/실외"] }}</td>
                     </tr>
                     {% else %}
                     <tr>
@@ -121,12 +122,6 @@
                 </tbody>
             </table>
         </div>
-    </section>
-
-    
-    <section id="nino-trip" class="content-section" style="display: block;">
-        <h2>니노의 여행</h2>
-        <!-- 니노의 여행 관련 내용 추가 -->
     </section>
 
     <!-- 다른 콘텐츠 영역 -->
@@ -151,8 +146,30 @@
     </section>
 
     <section id="forest" class="content-section" style="display: none;">
-        <h2>유아숲</h2>
-        <!-- 유아숲 관련 내용 추가 -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>지역</th>
+                        <th>장소</th>
+                        <th>관리주체</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for forest in forest_data %}
+                    <tr>
+                        <td>{{ forest.지역 }}</td>
+                        <td>{{ forest.장소 }}</td>
+                        <td>{{ forest.관리주체 }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3">데이터가 없습니다.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </section>
 
     <!-- 문의 섹션 -->
