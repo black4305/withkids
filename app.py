@@ -8,6 +8,7 @@ app = Flask(__name__)
 EVENT_DB_PATH = os.path.join("data", "event.db")
 NINO_TRIP_DB_PATH = os.path.join("data", "nino-trip.db")
 FOREST_DB_PATH = os.path.join("data", "forest.db")
+CAFE_DB_PATH = os.path.join("data", "cafe.db")
 
 # event.db에서 데이터 가져오기
 def get_event_data():
@@ -49,13 +50,30 @@ def get_forest_data():
     conn.close()
     return forests
 
+# cafe.db에서 데이터 가져오기
+def get_cafe_data():
+    conn = sqlite3.connect(CAFE_DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute("SELECT 지역, 장소, `알짜 팁`, 링크 FROM cafe_locations")
+    data = cursor.fetchall()
+    conn.close()
+    
+    cafes = [dict(row) for row in data]
+    for cafe in cafes:
+        if '알짜 팁' in cafe and cafe['알짜 팁']:
+            cafe['알짜 팁'] = '\\n'.join('- ' + part.strip() for part in cafe['알짜 팁'].split('-') if part)
+    
+    return cafes
+
 @app.route('/')
 def index():
     event_data = get_event_data()
     nino_trip_data = get_nino_trip_data()
     forest_data = get_forest_data()
+    cafe_data = get_cafe_data()
     
-    return render_template('index.html', event_data=event_data, nino_trip_data=nino_trip_data, forest_data=forest_data)
+    return render_template('index.html', event_data=event_data, nino_trip_data=nino_trip_data, forest_data=forest_data, cafe_data=cafe_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
