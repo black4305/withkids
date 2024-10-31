@@ -96,8 +96,6 @@
         </div>
     </section>
 
-    <!-- Nino's Trip Section -->
-    <!-- nino-trip 섹션 -->
     <section id="nino-trip" class="content-section" style="display: none;">
         <div class="table-container">
             <table>
@@ -138,8 +136,30 @@
     </section>
 
     <section id="cafe" class="content-section" style="display: none;">
-        <h2>카페 콘텐츠</h2>
-        <!-- 카페 관련 내용 추가 -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>지역</th>
+                        <th>장소</th>
+                        <th>알짜 팁</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cafe in cafe_data %}
+                    <tr>
+                        <td>{{ cafe.지역 }}</td>
+                        <td><a href="{{ cafe.링크 }}" target="_blank">{{ cafe.장소 }}</a></td>
+                        <td class="pre-wrap">{{ cafe["알짜 팁"] }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3">데이터가 없습니다.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </section>
 
     <section id="kids-restaurant" class="content-section" style="display: none;">
