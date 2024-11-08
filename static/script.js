@@ -20,3 +20,10 @@ function createShortcut() {
         alert("이 사이트를 홈 화면에 추가하려면 브라우저 메뉴에서 '홈 화면에 추가'를 선택하세요.");
     }
 }
+
+document.querySelector('.menu-icon').addEventListener('click', toggleMenu);
+
+function toggleMenu() {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('open');
+}

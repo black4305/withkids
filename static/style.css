@@ -88,9 +88,51 @@ td a:hover {
     text-decoration: underline;
 }
 
-/* 반응형 디자인 */
+/* 기본적으로 햄버거 아이콘 숨기기 */
+.menu-icon {
+    display: none;
+    font-size: 2em;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
 @media (max-width: 768px) {
+    /* 텍스트 크기 줄이기 */
     th, td {
         font-size: 0.85em;
     }
+
+    /* 탭 메뉴를 세로로 정렬 */
+    ul.tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 콘텐츠 영역 폭 조정 */
+    .content-section {
+        max-width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    /* 네비게이션 스타일 */
+    nav.open {
+        display: block;
+    }
+
+    nav {
+        display: none; /* 기본적으로 숨기기 */
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
 }
+
