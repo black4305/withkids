@@ -99,40 +99,42 @@ td a:hover {
     right: 20px;
 }
 
+/* 모바일 반응형 스타일 */
 @media (max-width: 768px) {
-    /* 텍스트 크기 줄이기 */
-    th, td {
-        font-size: 0.85em;
+    .menu-icon {
+        display: block;
     }
 
-    /* 탭 메뉴를 세로로 정렬 */
-    ul.tabs {
+    nav {
+        display: none;
+    }
+
+    nav.open {
+        display: block;
+    }
+
+    .tabs {
         flex-direction: column;
         align-items: center;
     }
 
-    /* 콘텐츠 영역 폭 조정 */
     .content-section {
         max-width: 100%;
         padding: 10px;
         box-sizing: border-box;
     }
 
-    .menu-icon {
+    /* 테이블을 세로 형태로 변경 */
+    th, td {
         display: block;
+        text-align: left;
+        padding: 10px;
+        border-bottom: 1px solid #444;
     }
 
-    /* 네비게이션 스타일 */
-    nav.open {
-        display: block;
-    }
-
-    nav {
-        display: none; /* 기본적으로 숨기기 */
-    }
-
-    .tabs {
-        flex-direction: column;
+    th {
+        font-weight: bold;
+        color: #ddd;
+        background-color: #222;
     }
 }
-
