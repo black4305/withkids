@@ -100,7 +100,7 @@ td a:hover {
 }
 
 /* 모바일 반응형 스타일 */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .menu-icon {
         display: block;
     }
@@ -124,7 +124,7 @@ td a:hover {
         box-sizing: border-box;
     }
 
-    /* 테이블을 세로 형태로 변경 */
+    테이블을 세로 형태로 변경
     th, td {
         display: block;
         text-align: left;
@@ -136,5 +136,39 @@ td a:hover {
         font-weight: bold;
         color: #ddd;
         background-color: #222;
+    }
+}
+
+/* 모바일 장치용 응답형 스타일 */
+@media screen and (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none; /* 헤더 숨기기 */
+    }
+
+    tr {
+        margin-bottom: 15px;
+    }
+
+    td {
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        text-align: left;
     }
 }
