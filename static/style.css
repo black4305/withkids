@@ -99,47 +99,7 @@ td a:hover {
     right: 20px;
 }
 
-/* 모바일 반응형 스타일 */
-/* @media (max-width: 768px) {
-    .menu-icon {
-        display: block;
-    }
-
-    nav {
-        display: none;
-    }
-
-    nav.open {
-        display: block;
-    }
-
-    .tabs {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .content-section {
-        max-width: 100%;
-        padding: 10px;
-        box-sizing: border-box;
-    }
-
-    테이블을 세로 형태로 변경
-    th, td {
-        display: block;
-        text-align: left;
-        padding: 10px;
-        border-bottom: 1px solid #444;
-    }
-
-    th {
-        font-weight: bold;
-        color: #ddd;
-        background-color: #222;
-    }
-}
-
-/* 모바일 장치용 응답형 스타일 */
+/* 모바일 장치용 테이블 스타일 */
 @media screen and (max-width: 768px) {
     table, thead, tbody, th, td, tr {
         display: block;
@@ -150,25 +110,84 @@ td a:hover {
     }
 
     tr {
-        margin-bottom: 15px;
+        margin-bottom: 15px; /* 각 행 간 간격 */
     }
 
     td {
         position: relative;
-        padding-left: 50%;
+        padding-left: 50%; /* 항목 이름 표시를 위한 공간 */
         text-align: right;
         border: none;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #eee; /* 아래쪽 경계선 추가 */
     }
 
     td::before {
-        content: attr(data-label);
+        content: attr(data-label); /* data-label 속성의 값 사용 */
         position: absolute;
         left: 10px;
-        width: 45%;
+        width: 45%; /* 항목 이름의 너비 */
         padding-right: 10px;
         white-space: nowrap;
         font-weight: bold;
         text-align: left;
     }
+
+    td + td {
+        margin-top: 10px; /* 열 간 간격 추가 */
+    }
+}
+
+/* 상단 메뉴바 개선 */
+@media screen and (max-width: 768px) {
+    ul.tabs {
+        display: flex;
+        flex-wrap: wrap; /* 자동 줄바꿈 */
+        justify-content: center;
+    }
+
+    ul.tabs li {
+        flex: 1 1 auto; /* 모든 탭이 한 줄에 들어오도록 크기 조정 */
+        margin: 5px 0; /* 탭 간 간격 */
+    }
+}
+
+/* 검색창과 버튼 스타일 */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    border-color: #1e90ff;
+}
+
+.search-button {
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.search-button:hover {
+    background-color: #155a99;
+}
+
+.search-button:active {
+    transform: scale(0.95);
 }

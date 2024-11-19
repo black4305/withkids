@@ -22,9 +22,27 @@ function createShortcut() {
 }
 
 document.querySelector('.menu-icon').addEventListener('click', toggleMenu);
-
 function toggleMenu() {
     const nav = document.querySelector('nav');
     nav.classList.toggle('open');
 }
 
+// 버튼으로 검색 기능 실행
+function filterTableWithButton(tableId, searchInputId) {
+    const searchInput = document.getElementById(searchInputId);
+    const query = searchInput.value.trim();
+    filterTable(tableId, query);
+}
+
+// 기존 검색 함수 (oninput에서 호출)
+function filterTable(tableId, query) {
+    const table = document.getElementById(tableId);
+    const rows = table.querySelectorAll('tbody tr');
+    const searchText = query.toLowerCase();
+
+    rows.forEach(row => {
+        const cells = Array.from(row.querySelectorAll('td'));
+        const match = cells.some(cell => cell.textContent.toLowerCase().includes(searchText));
+        row.style.display = match ? '' : 'none';
+    });
+}

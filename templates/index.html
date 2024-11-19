@@ -32,7 +32,7 @@
 </head>
 <body>
     <header>
-        <h1>Nino's Trip</h1>
+        <h1>NeStory</h1>
 
         <!-- 햄버거 메뉴 아이콘 -->
         <div class="menu-icon" onclick="toggleMenu()">
@@ -78,19 +78,19 @@
                 <tbody>
                     {% for event in event_data %}
                     <tr>
-                        <td>{{ event.작성일 }}</td>
-                        <td>{{ event.카테고리 }}</td>
-                        <td>{{ event.지역 }}</td>
-                        <td>{{ event.행사명 }}</td>
-                        <td>{{ event.내용 }}</td>
-                        <td>{{ event.장소 }}</td>
-                        <td>{{ event.일시 or 'N/A' }}</td>
-                        <td>{{ event.대상 or 'N/A' }}</td>
-                        <td>{{ event.접수기간 or 'N/A' }}</td>
-                        <td>{{ event.문의 or 'N/A' }}</td>
-                        <td><a href="{{ event.신청링크 }}" target="_blank">{{ event.신청링크 }}</a></td>
-                        <td><a href="{{ event.게시물링크 }}" target="_blank">{{ event.게시물링크 }}</a></td>
-                        <td><a href="{{ event.페이지링크 }}" target="_blank">{{ event.페이지링크 }}</a></td>
+                        <td data-label="작성일"></td><td>{{ event.작성일 }}</td>
+                        <td data-label="카테고리"></td><td>{{ event.카테고리 }}</td>
+                        <td data-label="지역"></td><td>{{ event.지역 }}</td>
+                        <td data-label="행사명"></td><td>{{ event.행사명 }}</td>
+                        <td data-label="내용"></td><td>{{ event.내용 }}</td>
+                        <td data-label="장소"></td><td>{{ event.장소 }}</td>
+                        <td data-label="일시"></td><td>{{ event.일시 or 'N/A' }}</td>
+                        <td data-label="대상"></td><td>{{ event.대상 or 'N/A' }}</td>
+                        <td data-label="접수기간"></td><td>{{ event.접수기간 or 'N/A' }}</td>
+                        <td data-label="문의"></td><td>{{ event.문의 or 'N/A' }}</td>
+                        <td data-label="신청 링크"></td><td><a href="{{ event.신청링크 }}" target="_blank">{{ event.신청링크 }}</a></td>
+                        <td data-label="게시물 링크"></td><td><a href="{{ event.게시물링크 }}" target="_blank">{{ event.게시물링크 }}</a></td>
+                        <td data-label="페이지 링크"></td><td><a href="{{ event.페이지링크 }}" target="_blank">{{ event.페이지링크 }}</a></td>
                     </tr>
                     {% else %}
                     <tr>
@@ -103,8 +103,15 @@
     </section>
 
     <section id="crookey" class="content-section" style="display: none;">
+        <div class="search-container">
+            <input type="text" id="trip-search" class="search-input" placeholder="검색어를 입력하세요..." />
+            <button class="search-button" onclick="filterTableWithButton('trip-table', 'trip-search')">
+                🔍
+            </button>
+        </div>
+
         <div class="table-container">
-            <table>
+            <table id="trip-table">
                 <thead>
                     <tr>
                         <th>지역</th>
@@ -118,12 +125,12 @@
                 <tbody>
                     {% for trip in nino_trip_data %}
                     <tr>
-                        <td>{{ trip.지역 }}</td>
-                        <td><a href="{{ trip.링크 }}" target="_blank">{{ trip.장소 }}</a></td>
-                        <td class="pre-wrap">{{ trip["알짜 팁"] }}</td>
-                        <td>{{ trip.나이 or 'N/A' }}</td>
-                        <td>{{ trip.가격 or 'N/A' }}</td>
-                        <td class="pre-wrap">{{ trip["실내/실외"] }}</td>
+                        <td data-label="지역">{{ trip.지역 }}</td>
+                        <td data-label="장소"><a href="{{ trip.링크 }}" target="_blank">{{ trip.장소 }}</a></td>
+                        <td data-label="알짜 팁" class="pre-wrap">{{ trip["알짜 팁"] }}</td>
+                        <td data-label="나이">{{ trip.나이 or 'N/A' }}</td>
+                        <td data-label="가격">{{ trip.가격 or 'N/A' }}</td>
+                        <td data-label="실내/실외" class="pre-wrap">{{ trip["실내/실외"] }}</td>
                     </tr>
                     {% else %}
                     <tr>
@@ -142,8 +149,15 @@
     </section>
 
     <section id="cafe" class="content-section" style="display: none;">
+        <div class="search-container">
+            <input type="text" id="cafe-search" class="search-input" placeholder="검색어를 입력하세요..." />
+            <button class="search-button" onclick="filterTableWithButton('cafe-table', 'cafe-search')">
+                🔍
+            </button>
+        </div>
+
         <div class="table-container">
-            <table>
+            <table id="cafe-table">
                 <thead>
                     <tr>
                         <th>지역</th>
@@ -154,9 +168,9 @@
                 <tbody>
                     {% for cafe in cafe_data %}
                     <tr>
-                        <td>{{ cafe.지역 }}</td>
-                        <td><a href="{{ cafe.링크 }}" target="_blank">{{ cafe.장소 }}</a></td>
-                        <td class="pre-wrap">{{ cafe["알짜 팁"] }}</td>
+                        <td data-label="지역">{{ cafe.지역 }}</td>
+                        <td data-label="장소"><a href="{{ cafe.링크 }}" target="_blank">{{ cafe.장소 }}</a></td>
+                        <td data-label="알짜 팁" class="pre-wrap">{{ cafe["알짜 팁"] }}</td>
                     </tr>
                     {% else %}
                     <tr>
@@ -179,8 +193,15 @@
     </section>
 
     <section id="forest" class="content-section" style="display: none;">
+        <div class="search-container">
+            <input type="text" id="forest-search" class="search-input" placeholder="검색어를 입력하세요..." />
+            <button class="search-button" onclick="filterTableWithButton('forest-table', 'forest-search')">
+                🔍
+            </button>
+        </div>
+
         <div class="table-container">
-            <table>
+            <table id="forest-table">
                 <thead>
                     <tr>
                         <th>지역</th>
@@ -191,9 +212,9 @@
                 <tbody>
                     {% for forest in forest_data %}
                     <tr>
-                        <td>{{ forest.지역 }}</td>
-                        <td>{{ forest.장소 }}</td>
-                        <td>{{ forest.관리주체 }}</td>
+                        <td data-label="지역">{{ forest.지역 }}</td>
+                        <td data-label="장소">{{ forest.장소 }}</td>
+                        <td data-label="관리주체">{{ forest.관리주체 }}</td>
                     </tr>
                     {% else %}
                     <tr>
