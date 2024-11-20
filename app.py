@@ -9,6 +9,8 @@ EVENT_DB_PATH = os.path.join("data", "event.db")
 NINO_TRIP_DB_PATH = os.path.join("data", "nino-trip.db")
 FOREST_DB_PATH = os.path.join("data", "forest.db")
 CAFE_DB_PATH = os.path.join("data", "cafe.db")
+KIDS_RESTAURANT_DB_PATH = os.path.join("data", "kids_restaurant.db")
+CULTURE_CENTER_DB_PATH = os.path.join("data", "culture_center.db")
 
 # event.db에서 데이터 가져오기
 def get_event_data():
@@ -66,14 +68,50 @@ def get_cafe_data():
     
     return cafes
 
+# kids_restaurant.db에서 데이터 가져오기
+def get_kids_restaurant_data():
+    conn = sqlite3.connect(KIDS_RESTAURANT_DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute("SELECT 장소, [알짜 팁], 링크 FROM kids_restaurant")
+    data = cursor.fetchall()
+    conn.close()
+
+    kids_restaurants = [dict(row) for row in data]
+    for kids_restaurant in kids_restaurants:
+        if '알짜 팁' in kids_restaurant and kids_restaurant['알짜 팁']:
+            kids_restaurant['알짜 팁'] = '\n'.join('- ' + part.strip() for part in kids_restaurant['알짜 팁'].split('-') if part)
+    
+    return kids_restaurants
+
+# culture_center.db에서 데이터 가져오기
+def get_culture_center_data():
+    conn = sqlite3.connect(CULTURE_CENTER_DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute("SELECT 장소, [알짜 팁], 나이, 종류, 가격, 링크 FROM culture_center")
+    data = cursor.fetchall()
+    conn.close()
+
+    culture_centers = [dict(row) for row in data]
+    for culture_center in culture_centers:
+        if '알짜 팁' in culture_center and culture_center['알짜 팁']:
+            culture_center['알짜 팁'] = '\n'.join('- ' + part.strip() for part in culture_center['알짜 팁'].split('-') if part)
+    
+    return culture_centers
+
 @app.route('/')
 def index():
     event_data = get_event_data()
     nino_trip_data = get_nino_trip_data()
     forest_data = get_forest_data()
     cafe_data = get_cafe_data()
+    kids_restaurant_data = get_kids_restaurant_data()
+    culture_center_data = get_culture_center_data()
+
     
-    return render_template('index.html', event_data=event_data, nino_trip_data=nino_trip_data, forest_data=forest_data, cafe_data=cafe_data)
+    return render_template('index.html', event_data=event_data, nino_trip_data=nino_trip_data, forest_data=forest_data, 
+                           cafe_data=cafe_data, kids_restaurant_data=kids_restaurant_data, culture_center_data=culture_center_data)
 
 if __name__ == '__main__':
     app.run(debug=True)

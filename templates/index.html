@@ -183,13 +183,75 @@
     </section>
 
     <section id="kids-restaurant" class="content-section" style="display: none;">
-        <h2>키즈식당 콘텐츠</h2>
-        <!-- 키즈식당 관련 내용 추가 -->
+        <div class="search-container">
+            <input type="text" id="kids-restaurant-search" class="search-input" placeholder="검색어를 입력하세요..." />
+            <button class="search-button" onclick="filterTableWithButton('kids-restaurant-table', 'kids-restaurant-search')">
+                🔍
+            </button>
+        </div>
+        <div class="table-container">
+            <table id="kids-restaurant-table">
+                <thead>
+                    <tr>
+                        <th>장소</th>
+                        <th>알짜 팁</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for kids_restaurant in kids_restaurant_data %}
+                    <tr>
+                        <td data-label="장소">
+                            <a href="{{ kids_restaurant.링크 }}" target="_blank">{{ kids_restaurant.장소 }}</a>
+                        </td>
+                        <td data-label="알짜 팁" class="pre-wrap">{{ kids_restaurant["알짜 팁"] or "N/A" }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="2">데이터가 없습니다.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </section>
 
     <section id="culture-center" class="content-section" style="display: none;">
-        <h2>문화센터 콘텐츠</h2>
-        <!-- 문화센터 관련 내용 추가 -->
+        <div class="search-container">
+            <input type="text" id="culture-center-search" class="search-input" placeholder="검색어를 입력하세요..." />
+            <button class="search-button" onclick="filterTableWithButton('culture-center-table', 'culture-center-search')">
+                🔍
+            </button>
+        </div>
+        <div class="table-container">
+            <table id="culture-center-table">
+                <thead>
+                    <tr>
+                        <th>장소</th>
+                        <th>알짜 팁</th>
+                        <th>나이</th>
+                        <th>종류</th>
+                        <th>가격</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for culture_center in culture_center_data %}
+                    <tr>
+                        <td data-label="장소">
+                            <a href="{{ culture_center.링크 }}" target="_blank">{{ culture_center.장소 }}</a>
+                        </td>
+                        <td data-label="알짜 팁" class="pre-wrap">{{ culture_center["알짜 팁"] }}</td>
+                        <td data-label="나이">{{ culture_center.나이 }}</td>
+                        <td data-label="종류">{{ culture_center.종류 }}</td>
+                        <td data-label="가격">{{ culture_center.가격 }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5">데이터가 없습니다.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </section>
 
     <section id="forest" class="content-section" style="display: none;">
