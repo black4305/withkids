@@ -71,15 +71,7 @@ th, td {
     border: 1px solid #444;
     color: #fff;
     font-size: 0.9em;
-    white-space: normal; /* 줄바꿈 문자(\n)를 유지 */
-}
-
-/* 특정 테이블 스타일 강제 적용 */
-#cafe-table th, #cafe-table td,
-#kids-restaurant-table th, #kids-restaurant-table td,
-#culture-center-table th, #culture-center-table td {
-    text-align: center;
-    vertical-align: middle;
+    white-space: pre-wrap; /* 줄바꿈 문자(\n)를 유지 */
 }
 
 th {
@@ -90,10 +82,6 @@ th {
 td a {
     color: #1e90ff;
     text-decoration: none;
-    display: inline-block; /* a 태그를 block처럼 처리 */
-    margin: 0; /* a 태그 앞뒤 여백 제거 */
-    padding: 0; /* 내부 여백 제거 */
-    text-align: center; /* 텍스트 정렬 */
 }
 
 td a:hover {
