@@ -159,7 +159,9 @@ td a:hover {
 
     th:first-child, /* th로 된 '장소' 헤더 숨김 */
     td[data-label="장소"] {
-        text-align: left; /* 왼쪽 정렬 */
+        text-align: left !important; /* 강제 왼쪽 정렬 */
+        padding-left: 10px; /* 왼쪽 여백 추가 */
+        white-space: nowrap; /* 텍스트 줄바꿈 방지 */
     }
 }
 
