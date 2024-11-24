@@ -135,21 +135,31 @@ td a:hover {
     td + td {
         margin-top: 10px; /* 열 간 간격 추가 */
     }
-}
 
-/* 상단 메뉴바 개선 */
-@media screen and (max-width: 768px) {
     ul.tabs {
         display: flex;
         flex-wrap: wrap; /* 자동 줄바꿈 */
         justify-content: center;
+        padding: 0;
+        margin: 0 auto;
     }
 
     ul.tabs li {
-        flex: 1 1 auto; /* 모든 탭이 한 줄에 들어오도록 크기 조정 */
-        margin: 5px 0; /* 탭 간 간격 */
-        font-size: 0.9em; /* 폰트 크기 축소 */
-        padding: 10px 15px; /* 내부 여백 조정 */
+        flex: 0 0 25%; /* 각 탭의 너비를 25%로 설정 */
+        text-align: center;
+        margin: 5px 0;
+        font-size: 0.9em;
+        padding: 10px 0;
+    }
+
+    /* '장소' 열 숨기기 */
+    td[data-label="장소"]::before {
+        content: ""; /* data-label 값을 빈 문자열로 설정 */
+    }
+
+    th:first-child, /* th로 된 '장소' 헤더 숨김 */
+    td[data-label="장소"] {
+        text-align: left; /* 왼쪽 정렬 */
     }
 }
 
