@@ -84,3 +84,29 @@ function filterTable(tableId, query) {
         row.style.display = match ? '' : 'none';
     });
 }
+
+// 문의 목록 업데이트
+async function loadInquiries() {
+    try {
+        const response = await fetch('/api/inquiries');
+        const inquiries = await response.json();
+
+        const inquiryList = document.getElementById('inquiryList');
+        if (inquiries.length === 0) {
+            inquiryList.innerHTML = '<p>등록된 문의가 없습니다.</p>';
+        } else {
+            inquiryList.innerHTML = inquiries.map(inquiry => `
+                <div class="inquiry">
+                    <h3>${inquiry.name}</h3>
+                    <p><strong>문의 내용:</strong> ${inquiry.message}</p>
+                    <p><strong>답변:</strong> ${inquiry.response || '답변 대기 중...'}</p>
+                </div>
+            `).join('');
+        }
+    } catch (error) {
+        document.getElementById('inquiryList').innerHTML = '<p>문의 목록을 불러오는 데 실패했습니다.</p>';
+    }
+}
+
+// 페이지 로드 시 목록 불러오기
+window.onload = loadInquiries;
