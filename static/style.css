@@ -205,3 +205,64 @@ td a:hover {
 .search-button:active {
     transform: scale(0.95);
 }
+
+/* 문의 섹션 전용 스타일 */
+#contact {
+    padding: 30px;
+    background-color: #222; /* 섹션 배경색 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+}
+
+#contact h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #1e90ff;
+    text-align: center;
+}
+
+#contact label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+#contact input,
+#contact textarea {
+    width: 100%;
+    max-width: 800px;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+#contact textarea {
+    height: 200px;
+    resize: vertical; /* 세로 방향 크기 조정 가능 */
+}
+
+#contact button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#contact button:hover {
+    background-color: #45a049;
+}
+
+#contact button:active {
+    transform: scale(0.95);
+}
