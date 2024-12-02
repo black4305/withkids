@@ -5,6 +5,7 @@ body {
     padding: 0;
     background-color: #000;
     color: #fff;
+    overflow-y: auto; /* 스크롤 활성화 */
 }
 
 header h1 {
@@ -209,10 +210,11 @@ td a:hover {
 /* 문의 섹션 전용 스타일 */
 #contact {
     padding: 30px;
-    background-color: #222; /* 섹션 배경색 */
-    border-radius: 10px; /* 모서리 둥글게 */
+    background-color: #222;
+    border-radius: 10px;
     color: #fff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    margin-bottom: 50px; /* 하단 여백 추가 */
 }
 
 #contact h1 {
@@ -265,4 +267,49 @@ td a:hover {
 
 #contact button:active {
     transform: scale(0.95);
+}
+
+#admin-login {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+}
+
+#admin-login h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#adminLoginForm input {
+    width: 90%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#adminLoginForm button {
+    width: 100%;
+    max-width: 150px;
+    padding: 12px;
+    font-size: 1.2em;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#adminLoginForm button:hover {
+    background-color: #45a049;
 }

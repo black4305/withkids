@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nino's Trip</title>
+    <title>NeStory</title>
 
     <!-- 파비콘 설정 -->
     <link rel="icon" href="{{ url_for('static', filename='icons/icon_32x32.png') }}" type="image/png">
@@ -42,7 +42,7 @@
         <!-- 가로 배열된 탭 -->
         <nav>
             <ul class="tabs">
-                <li class="tab" onclick="showContent('event')">이달의     네쓰 Pick</li>
+                <li class="tab" onclick="showContent('event')">이달의 네쓰 Pick</li>
                 <li class="tab" onclick="showContent('crookey')">가족 여행</li>
                 <li class="tab" onclick="showContent('activity')">액티비티</li>
                 <li class="tab" onclick="showContent('cafe')">카페</li>
@@ -300,7 +300,13 @@
         
             <button type="submit">문의하기</button>
         </form>
+        
+        <h2>문의 내역</h2>
+        <div id="inquiryList">
+            <!-- 문의 목록이 여기에 표시됩니다 -->
+        </div>
     </section>
+    
     
     <script>
         // 문의 폼 제출 처리
