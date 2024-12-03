@@ -12,6 +12,7 @@ FOREST_DB_PATH = os.path.join("data", "forest.db")
 CAFE_DB_PATH = os.path.join("data", "cafe.db")
 KIDS_RESTAURANT_DB_PATH = os.path.join("data", "kids_restaurant.db")
 CULTURE_CENTER_DB_PATH = os.path.join("data", "culture_center.db")
+ACTIVITY_DB_PATH = os.path.join("data", "activity.db")
 DB_PATH = os.path.join("data", "db.sqlite3")
 
 # event.db에서 데이터 가져오기
@@ -102,6 +103,25 @@ def get_culture_center_data():
     
     return culture_centers
 
+# activity.db에서 데이터 가져오기
+def get_activity_data():
+    conn = sqlite3.connect(ACTIVITY_DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    cursor.execute("SELECT 지역, 장소, [알짜팁], 가격, 링크 FROM activities")
+    data = cursor.fetchall()
+    conn.close()
+
+    activities = [dict(row) for row in data]
+    for activity in activities:
+        if '알짜팁' in activity and activity['알짜팁']:
+            activity['알짜팁'] = '\n'.join('- ' + part.strip() for part in activity['알짜팁'].split('-') if part)
+        
+        if '가격' in activity and activity['가격']:
+            activity['가격'] = '\n'.join(part.strip() for part in activity['가격'].split('-') if part)
+    
+    return activities
+
 @app.route('/')
 def index():
     event_data = get_event_data()
@@ -110,10 +130,12 @@ def index():
     cafe_data = get_cafe_data()
     kids_restaurant_data = get_kids_restaurant_data()
     culture_center_data = get_culture_center_data()
-
+    activity_data = get_activity_data()
     
     return render_template('index.html', event_data=event_data, nino_trip_data=nino_trip_data, forest_data=forest_data, 
-                           cafe_data=cafe_data, kids_restaurant_data=kids_restaurant_data, culture_center_data=culture_center_data)
+                           cafe_data=cafe_data, kids_restaurant_data=kids_restaurant_data, 
+                           culture_center_data=culture_center_data, activity_data=activity_data)
+
 
 @app.route('/api/inquiries', methods=['POST'])
 def add_inquiry():
