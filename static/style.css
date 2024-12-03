@@ -165,19 +165,14 @@ td a:hover {
         white-space: nowrap; /* 텍스트 줄바꿈 방지 */
     }
 
-     /* 모바일 화면에서 '지역' 텍스트 숨기기 */
-     #crookey .table-container::before,
-     #activity .table-container::before,
-     #cafe .table-container::before {
+    .tab-content .place .place-label { /* '장소' 텍스트 요소를 숨깁니다 */
         display: none;
-     }
- 
-     /* 지역명 왼쪽 정렬 */
-     #crookey table td:first-child,
-     #activity table td:first-child,
-     #cafe table td:first-child {
-        text-align: left !important;
-     }
+    }
+      
+    .tab-content .place .place-name {
+        text-align: left; /* 장소명 왼쪽 정렬 */
+        margin-left: 0;   /* 왼쪽 여백 초기화 */
+    }
 }
 
 /* 검색창과 버튼 스타일 */
