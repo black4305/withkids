@@ -104,13 +104,14 @@ td a:hover {
 .tab-content .place {
     display: flex;
     align-items: center;
-  }
+    justify-content: flex-start; /* 기본적으로 왼쪽 정렬 */
+}
   
   .tab-content .place-name {
-    font-size: 16px;
-    margin-left: 10px; /* 필요시 여백 추가 */
-  }
-  
+    font-size: 16px; /* 원하는 폰트 크기 */
+    margin-left: 10px; /* 여백 추가 (필요시 조정) */
+}
+
 /* 모바일 장치용 테이블 스타일 */
 @media screen and (max-width: 768px) {
     table, thead, tbody, th, td, tr {
@@ -176,14 +177,18 @@ td a:hover {
         white-space: nowrap; /* 텍스트 줄바꿈 방지 */
     }
 
-    .tab-content .place[data-label="장소"] .place-name {
-        text-align: left; /* 왼쪽 정렬 */
+    .tab-content .place[data-label="장소"] {
+        text-align: left; /* 장소명 왼쪽 정렬 */
+    }
+    
+      .tab-content .place[data-label="장소"] .place-name {
+        text-align: left; /* 장소명 왼쪽 정렬 */
         margin-left: 0;   /* 왼쪽 여백 없애기 */
     }
     
-      .tab-content .place[data-label="장소"]::before {
-        content: ""; /* '장소' 텍스트 숨김 */
-        display: none;
+      /* '장소' 텍스트 숨기기 */
+      .tab-content .place[data-label="장소"] .place-label {
+        display: none; /* '장소' 텍스트 숨김 */
     }
 }
 
