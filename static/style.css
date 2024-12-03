@@ -176,6 +176,7 @@ td a:hover {
 
     [data-label="장소"] {
         text-align: left !important;
+        margin: 0;
     }
 }
 
