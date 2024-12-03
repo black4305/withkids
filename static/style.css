@@ -170,25 +170,15 @@ td a:hover {
         content: ""; /* data-label 값을 빈 문자열로 설정 */
     }
 
+    td[data-label="지역"]::before {
+        content: ""; /* data-label 값을 빈 문자열로 설정 */
+    }
+
     th:first-child, /* th로 된 '장소' 헤더 숨김 */
     td[data-label="장소"] {
         text-align: left !important; /* 강제 왼쪽 정렬 */
         padding-left: 10px; /* 왼쪽 여백 추가 */
         white-space: nowrap; /* 텍스트 줄바꿈 방지 */
-    }
-
-    .tab-content .place[data-label="장소"] {
-        text-align: left; /* 장소명 왼쪽 정렬 */
-    }
-    
-      .tab-content .place[data-label="장소"] .place-name {
-        text-align: left; /* 장소명 왼쪽 정렬 */
-        margin-left: 0;   /* 왼쪽 여백 없애기 */
-    }
-    
-      /* '장소' 텍스트 숨기기 */
-      .tab-content .place[data-label="장소"] .place-label {
-        display: none; /* '장소' 텍스트 숨김 */
     }
 }
 
