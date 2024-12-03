@@ -176,7 +176,7 @@ td a:hover {
      #crookey table td:first-child,
      #activity table td:first-child,
      #cafe table td:first-child {
-        text-align: left;
+        text-align: left !important;
      }
 }
 
