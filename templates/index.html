@@ -48,7 +48,6 @@
                 <li class="tab" onclick="showContent('cafe')">카페</li>
                 <li class="tab" onclick="showContent('kids-restaurant')">키즈식당</li>
                 <li class="tab" onclick="showContent('culture-center')">문화센터</li>
-                <!-- <li class="tab" onclick="showContent('forest')">유아숲</li> -->
                 <li class="tab" onclick="showContent('contact')">문의</li>
                 <!-- <li class="tab" onclick="createShortcut()">즐겨찾기</li> -->
             </ul>
@@ -56,53 +55,41 @@
     </header>
 
     <section id="event" class="content-section" style="display: none;">
-        <h2>현재 점검 중입니다</h2>
-        <!-- <div class="table-container">
-            <table>
+        <div class="search-container">
+            <input type="text" id="event-search" class="search-input" placeholder="검색어를 입력하세요..." />
+            <button class="search-button" onclick="filterTableWithButton('event-table', 'event-search')">
+                🔍
+            </button>
+        </div>
+    
+        <div class="table-container">
+            <table id="event-table">
                 <thead>
                     <tr>
-                        <th>작성일</th>
-                        <th>카테고리</th>
                         <th>지역</th>
                         <th>행사명</th>
-                        <th>내용</th>
-                        <th>장소</th>
-                        <th>일시</th>
-                        <th>대상</th>
-                        <th>접수기간</th>
-                        <th>문의</th>
-                        <th>신청 링크</th>
-                        <th>게시물 링크</th>
-                        <th>페이지 링크</th>
+                        <th>기간</th>
+                        <th>행사 소개</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for event in event_data %}
                     <tr>
-                        <td data-label="작성일"></td><td>{{ event.작성일 }}</td>
-                        <td data-label="카테고리"></td><td>{{ event.카테고리 }}</td>
-                        <td data-label="지역"></td><td>{{ event.지역 }}</td>
-                        <td data-label="행사명"></td><td>{{ event.행사명 }}</td>
-                        <td data-label="내용"></td><td>{{ event.내용 }}</td>
-                        <td data-label="장소"></td><td>{{ event.장소 }}</td>
-                        <td data-label="일시"></td><td>{{ event.일시 or 'N/A' }}</td>
-                        <td data-label="대상"></td><td>{{ event.대상 or 'N/A' }}</td>
-                        <td data-label="접수기간"></td><td>{{ event.접수기간 or 'N/A' }}</td>
-                        <td data-label="문의"></td><td>{{ event.문의 or 'N/A' }}</td>
-                        <td data-label="신청 링크"></td><td><a href="{{ event.신청링크 }}" target="_blank">{{ event.신청링크 }}</a></td>
-                        <td data-label="게시물 링크"></td><td><a href="{{ event.게시물링크 }}" target="_blank">{{ event.게시물링크 }}</a></td>
-                        <td data-label="페이지 링크"></td><td><a href="{{ event.페이지링크 }}" target="_blank">{{ event.페이지링크 }}</a></td>
+                        <td data-label="지역">{{ event.지역 }}</td>
+                        <td data-label="행사명">{{ event.행사명 }}</td>
+                        <td data-label="기간">{{ event.기간 }}</td>
+                        <td data-label="행사 소개" class="pre-wrap">{{ event["행사 소개"] }}</td>
                     </tr>
                     {% else %}
                     <tr>
-                        <td colspan="13">데이터가 없습니다.</td>
+                        <td colspan="4">데이터가 없습니다.</td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-        </div> -->
+        </div>
     </section>
-
+    
     <section id="crookey" class="content-section" style="display: none;">
         <div class="search-container">
             <input type="text" id="trip-search" class="search-input" placeholder="검색어를 입력하세요..." />
@@ -278,40 +265,6 @@
                     {% else %}
                     <tr>
                         <td colspan="5">데이터가 없습니다.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <section id="forest" class="content-section" style="display: none;">
-        <div class="search-container">
-            <input type="text" id="forest-search" class="search-input" placeholder="검색어를 입력하세요..." />
-            <button class="search-button" onclick="filterTableWithButton('forest-table', 'forest-search')">
-                🔍
-            </button>
-        </div>
-
-        <div class="table-container">
-            <table id="forest-table">
-                <thead>
-                    <tr>
-                        <th>지역</th>
-                        <th>장소</th>
-                        <th>관리주체</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for forest in forest_data %}
-                    <tr>
-                        <td data-label="지역">{{ forest.지역 }}</td>
-                        <td data-label="장소">{{ forest.장소 }}</td>
-                        <td data-label="관리주체">{{ forest.관리주체 }}</td>
-                    </tr>
-                    {% else %}
-                    <tr>
-                        <td colspan="3">데이터가 없습니다.</td>
                     </tr>
                     {% endfor %}
                 </tbody>

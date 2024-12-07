@@ -18,11 +18,17 @@ DB_PATH = os.path.join("data", "db.sqlite3")
 # event.db에서 데이터 가져오기
 def get_event_data():
     conn = sqlite3.connect(EVENT_DB_PATH)
+    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM event")
-    columns = [description[0] for description in cursor.description]
-    events = [dict(zip(columns, row)) for row in cursor.fetchall()]
+    cursor.execute("SELECT 지역, 행사명, 기간, [행사 소개] FROM Sheet1")
+    data = cursor.fetchall()
     conn.close()
+
+    events = [dict(row) for row in data]
+    for event in events:
+        if '행사 소개' in event and event['행사 소개']:
+            event['행사 소개'] = '\n'.join('- ' + part.strip() for part in event['행사 소개'].split('-') if part)
+    
     return events
 
 # nino-trip.db에서 데이터 가져오기
