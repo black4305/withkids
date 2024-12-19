@@ -2,7 +2,6 @@ from flask import Flask, render_template
 from flask import request, jsonify
 import sqlite3
 import os
-
 app = Flask(__name__)
 
 # 데이터베이스 파일 경로 설정
