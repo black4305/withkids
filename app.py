@@ -24,10 +24,6 @@ def get_event_data():
     conn.close()
 
     events = [dict(row) for row in data]
-    for event in events:
-        if '행사 소개' in event and event['행사 소개']:
-            event['행사 소개'] = '\n'.join('- ' + part.strip() for part in event['행사 소개'].split('-') if part)
-    
     return events
 
 # nino-trip.db에서 데이터 가져오기
