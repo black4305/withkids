@@ -31,7 +31,7 @@ def get_nino_trip_data():
     conn = sqlite3.connect(NINO_TRIP_DB_PATH)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
-    cursor.execute("SELECT 지역, 장소, `알짜 팁`, 나이, 가격, `실내/실외`, 링크 FROM TravelData")
+    cursor.execute("SELECT 지역, 장소, `알짜 팁`, 나이, 가격, `실내/실외`, 링크 FROM nino_trip")
     data = cursor.fetchall()
     conn.close()
     
