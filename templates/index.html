@@ -151,10 +151,10 @@
                 <tbody>
                     {% for activity in activity_data %}
                     <tr>
-                        <td>{{ activity.지역 }}</td>
-                        <td><a href="{{ activity.링크 }}" target="_blank">{{ activity.장소 }}</a></td>
-                        <td class="pre-wrap">{{ activity.알짜팁 }}</td>
-                        <td>{{ activity.가격 }}</td>
+                        <td data-label="지역">{{ activity.지역 }}</td>
+                        <td data-label="장소"><a href="{{ activity.링크 }}" target="_blank">{{ activity.장소 }}</a></td>
+                        <td data-label="알짜 팁" class="pre-wrap">{{ activity["알짜 팁"] or 'N/A' }}</td>
+                        <td data-label="가격">{{ activity["가격"] }}</td>
                     </tr>
                     {% else %}
                     <tr>

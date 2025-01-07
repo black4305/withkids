@@ -109,15 +109,12 @@ def get_activity_data():
     conn = sqlite3.connect(ACTIVITY_DB_PATH)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
-    cursor.execute("SELECT 지역, 장소, [알짜팁], 가격, 링크 FROM activities")
+    cursor.execute("SELECT 지역, 장소, [알짜 팁], [가격], 링크 FROM activities")
     data = cursor.fetchall()
     conn.close()
 
     activities = [dict(row) for row in data]
     for activity in activities:
-        if '알짜팁' in activity and activity['알짜팁']:
-            activity['알짜팁'] = '\n'.join('- ' + part.strip() for part in activity['알짜팁'].split('-') if part)
-        
         if '가격' in activity and activity['가격']:
             activity['가격'] = '\n'.join(part.strip() for part in activity['가격'].split('-') if part)
     
