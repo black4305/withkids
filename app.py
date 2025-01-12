@@ -61,15 +61,11 @@ def get_cafe_data():
     conn = sqlite3.connect(CAFE_DB_PATH)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
-    cursor.execute("SELECT 지역, 장소, [알짜 팁], 링크 FROM cafe_locations")
+    cursor.execute("SELECT 지역, 장소, [알짜 팁], 링크 FROM cafe")
     data = cursor.fetchall()
     conn.close()
 
     cafes = [dict(row) for row in data]
-    for cafe in cafes:
-        if '알짜 팁' in cafe and cafe['알짜 팁']:
-            cafe['알짜 팁'] = '\n'.join('- ' + part.strip() for part in cafe['알짜 팁'].split('-') if part)
-    
     return cafes
 
 # kids_restaurant.db에서 데이터 가져오기
